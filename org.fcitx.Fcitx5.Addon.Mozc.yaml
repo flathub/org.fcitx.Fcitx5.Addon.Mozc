@@ -1,37 +1,44 @@
 app-id: org.fcitx.Fcitx5.Addon.Mozc
 runtime: org.fcitx.Fcitx5
 runtime-version: stable
-sdk: org.kde.Sdk//5.15
+sdk: org.kde.Sdk//5.15-21.08
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm13
 build-extension: true
 appstream-compose: false
 separate-locales: false
 build-options:
   prefix: /app/addons/Mozc
   prepend-pkg-config-path: /app/addons/Mozc/lib/pkgconfig
-
+  prepend-path: /usr/lib/sdk/llvm13/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm13/lib
 cleanup:
   - /bin
   - /include
   - /lib/pkgconfig
-  - "*.la"
-
+  - '*.la'
 modules:
   - name: mozc
     buildsystem: simple
     subdir: src
     build-commands:
-      - GYP_DEFINES="document_dir=/app/ime/mozc/licenses/mozc use_libzinnia=1 enable_gtk_renderer=0 use_fcitx5=YES use_fcitx=0" python build_mozc.py gyp
-          --server_dir=/app/addons/Mozc/lib/mozc
-      - python build_mozc.py build -c Release server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc
+      - GYP_DEFINES="document_dir=/app/ime/mozc/licenses/mozc use_libzinnia=1 enable_gtk_renderer=0
+        use_fcitx5=YES use_fcitx=0" python build_mozc.py gyp --server_dir=/app/addons/Mozc/lib/mozc
+      - python build_mozc.py build -c Release server/server.gyp:mozc_server gui/gui.gyp:mozc_tool
+        unix/fcitx5/fcitx5.gyp:fcitx5-mozc
       - _bldtype=Release PREFIX=${FLATPAK_DEST} ../scripts/install_server
       - _bldtype=Release PREFIX=${FLATPAK_DEST} ../scripts/install_fcitx5
     sources:
       - type: git
         url: https://github.com/fcitx/mozc
-        commit: b34437de435ef1ca30ace834d82a9a99a0d645da
         disable-shallow-clone: true
+        commit: 2ed4b6e619f260c2d2963e6a8195753deb5070a9
       - type: shell
         commands:
           - sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
     post-install:
-      - appstream-compose --basename=org.fcitx.Fcitx5.Addon.Mozc --prefix=${FLATPAK_DEST} --origin=flatpak org.fcitx.Fcitx5.Addon.Mozc
+      - awk -i inplace '/<\/component>/ { print "  <content_rating type=\"oars-1.1\"/>";
+        } { print $0; }' ${FLATPAK_DEST}/share/metainfo/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml
+      - appstream-compose --basename=org.fcitx.Fcitx5.Addon.Mozc --prefix=${FLATPAK_DEST}
+        --origin=flatpak org.fcitx.Fcitx5.Addon.Mozc
+branch: stable
