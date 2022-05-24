@@ -32,13 +32,11 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 2ed4b6e619f260c2d2963e6a8195753deb5070a9
+        commit: 34ee2d37428afec5fc9fbe302142afcb7a10fbc1
       - type: shell
         commands:
           - sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
     post-install:
-      - awk -i inplace '/<\/component>/ { print "  <content_rating type=\"oars-1.1\"/>";
-        } { print $0; }' ${FLATPAK_DEST}/share/metainfo/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml
       - appstream-compose --basename=org.fcitx.Fcitx5.Addon.Mozc --prefix=${FLATPAK_DEST}
         --origin=flatpak org.fcitx.Fcitx5.Addon.Mozc
 branch: stable
