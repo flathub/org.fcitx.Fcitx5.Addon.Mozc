@@ -1,4 +1,5 @@
 app-id: org.fcitx.Fcitx5.Addon.Mozc
+branch: stable
 runtime: org.fcitx.Fcitx5
 runtime-version: stable
 sdk: org.kde.Sdk//5.15-21.08
@@ -32,11 +33,10 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 34ee2d37428afec5fc9fbe302142afcb7a10fbc1
+        commit: 9a44f2267096458bb09fb0cae5cc561e12ff93c1
       - type: shell
         commands:
           - sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
     post-install:
       - appstream-compose --basename=org.fcitx.Fcitx5.Addon.Mozc --prefix=${FLATPAK_DEST}
         --origin=flatpak org.fcitx.Fcitx5.Addon.Mozc
-branch: stable
