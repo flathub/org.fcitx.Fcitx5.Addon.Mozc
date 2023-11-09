@@ -33,7 +33,7 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 1d7616cabe97eb6b5f50aa4bbbc26db78a6ea0dd
+        commit: 835de48f0afbf16ee03f6576b091a5e019487df3
       - type: shell
         commands:
           - sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
