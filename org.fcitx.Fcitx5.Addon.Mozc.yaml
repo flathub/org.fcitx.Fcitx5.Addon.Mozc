@@ -11,11 +11,10 @@ appstream-compose: false
 separate-locales: false
 build-options:
   prefix: /app/addons/Mozc
-  prepend-pkg-config-path: /app/addons/Mozc/lib/pkgconfig
   prepend-path: /usr/lib/sdk/llvm17/bin:/usr/lib/sdk/bazel/bin
+  prepend-pkg-config-path: /app/addons/Mozc/lib/pkgconfig
   prepend-ld-library-path: /usr/lib/sdk/llvm17/lib
   env:
-    - _bldtype=Release
     - server_dir=/app/addons/Mozc/lib/mozc
     - document_dir=/app/ime/mozc/licenses/mozc
     - icons_dir=/app/share/icons/mozc
@@ -30,15 +29,14 @@ modules:
     buildsystem: simple
     subdir: src
     build-commands:
-      - bazel build --distdir=$PWD/../bazel-deps --config oss_linux --compilation_mode
-        opt --copt "-fPIC" --linkopt "${LDFLAGS}" unix/fcitx5:fcitx5-mozc.so server:mozc_server
-        gui/tool:mozc_tool && _bldtype=Release PREFIX=${FLATPAK_DEST} ../scripts/install_server_bazel
-        && _bldtype=Release PREFIX=${FLATPAK_DEST} ../scripts/install_fcitx5_bazel
+      - ../scripts/build_fcitx5_bazel --distdir=$PWD/../bazel-deps --linkopt "${LDFLAGS}"
+        && PREFIX=${FLATPAK_DEST} ../scripts/install_server_bazel && PREFIX=${FLATPAK_DEST}
+        ../scripts/install_fcitx5_bazel
     sources:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 773c4c5760b6e8a52fdff5ae6ec09fb1bbc4bc47
+        commit: c0bdc91234eb5afe29798876790d599f4d99f6e4
       - type: patch
         path: zip-code.patch
       - type: shell
