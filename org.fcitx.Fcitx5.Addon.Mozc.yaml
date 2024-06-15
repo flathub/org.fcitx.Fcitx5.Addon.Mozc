@@ -36,7 +36,7 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: c0bdc91234eb5afe29798876790d599f4d99f6e4
+        commit: e379550bcdfd5f54507a8ad3d95f20cb9e0385fb
       - type: patch
         path: zip-code.patch
       - type: shell
