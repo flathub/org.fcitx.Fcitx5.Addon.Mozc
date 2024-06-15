@@ -7,7 +7,6 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm17
   - org.freedesktop.Sdk.Extension.bazel
 build-extension: true
-appstream-compose: false
 separate-locales: false
 build-options:
   prefix: /app/addons/Mozc
@@ -46,6 +45,3 @@ modules:
             -e "s|LINUX_MOZC_ICONS_DIR = \(.*\)|LINUX_MOZC_ICONS_DIR = \"${icons_dir}\"|"
             -i src/config.bzl
       - mozc-deps.yaml
-    post-install:
-      - appstream-compose --basename=org.fcitx.Fcitx5.Addon.Mozc --prefix=${FLATPAK_DEST}
-        --origin=flatpak org.fcitx.Fcitx5.Addon.Mozc
