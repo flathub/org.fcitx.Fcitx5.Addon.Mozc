@@ -2,7 +2,7 @@ app-id: org.fcitx.Fcitx5.Addon.Mozc
 branch: stable
 runtime: org.fcitx.Fcitx5
 runtime-version: stable
-sdk: org.kde.Sdk//6.6
+sdk: org.kde.Sdk//6.8
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm18
 build-extension: true
@@ -38,11 +38,11 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 1dcab4b269a6dffb6d17ec5fc76c85f10ebbd86d
+        commit: 1798097055a1b892bee1638b5606fc6e01b5d001
       - type: git
         url: https://github.com/bazelbuild/bazel-central-registry
         dest: bcr
-        commit: ef34e6bfad5a6ab54080ddcc83a4d65849855e3a
+        commit: a81b75478fff042821d2e1974f87d98cbdc630ff
       - mozc-deps.yaml
       - type: shell
         commands:
