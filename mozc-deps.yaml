@@ -1,7 +1,11 @@
 - type: file
-  url: https://github.com/bazel-contrib/bazel_features/releases/download/v1.11.0/bazel_features-v1.11.0.tar.gz
+  url: https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz
   dest: bazel-deps
-  sha256: 2cd9e57d4c38675d321731d65c15258f3a66438ad531ae09cb8bb14217dc8572
+  sha256: f50e5ac311a81382da7fa75b97310e4b9006474f9560ac46f54a9967f07d4ae3
+- type: file
+  url: https://github.com/bazel-contrib/bazel_features/releases/download/v1.21.0/bazel_features-v1.21.0.tar.gz
+  dest: bazel-deps
+  sha256: af3d4fb1cf4f25942cb4a933b1ad93a0ea9fe9ee70c2af7f369fb72a67c266e5
 - type: file
   url: https://github.com/bazelbuild/apple_support/releases/download/1.16.0/apple_support.1.16.0.tar.gz
   dest: bazel-deps
@@ -19,54 +23,58 @@
   dest: bazel-deps
   sha256: 65aedff0cd728bee394f6fb8e65ba39c4c5efb11b29b766356922d4a74c623f5
 - type: file
-  url: https://github.com/bazelbuild/rules_apple/releases/download/3.5.1/rules_apple.3.5.1.tar.gz
+  url: https://github.com/bazelbuild/rules_apple/releases/download/3.16.1/rules_apple.3.16.1.tar.gz
   dest: bazel-deps
-  sha256: b4df908ec14868369021182ab191dbd1f40830c9b300650d5dc389e0b9266c8d
+  sha256: 352428421c89dba8859055c3e1ba42f742c224544bf0e196c926d1cf44a2d726
 - type: file
-  url: https://github.com/bazelbuild/rules_cc/releases/download/0.0.9/rules_cc-0.0.9.tar.gz
+  url: https://github.com/bazelbuild/rules_cc/releases/download/0.0.17/rules_cc-0.0.17.tar.gz
   dest: bazel-deps
-  sha256: 2037875b9a4456dce4a79d112a8ae885bbc4aad968e6587dca6e64f3a0900cdf
+  sha256: abc605dd850f813bb37004b77db20106a19311a96b2da1c92b789da529d28fe1
 - type: file
-  url: https://github.com/bazelbuild/rules_java/releases/download/7.9.0/rules_java-7.9.0.tar.gz
+  url: https://github.com/bazelbuild/rules_java/releases/download/8.6.1/rules_java-8.6.1.tar.gz
   dest: bazel-deps
-  sha256: 41131de4417de70b9597e6ebd515168ed0ba843a325dc54a81b92d7af9a7b3ea
+  sha256: c5bc17e17bb62290b1fd8fdd847a2396d3459f337a7e07da7769b869b488ec26
 - type: file
-  url: https://github.com/bazelbuild/rules_license/releases/download/0.0.7/rules_license-0.0.7.tar.gz
+  url: https://github.com/bazelbuild/rules_kotlin/releases/download/v1.9.6/rules_kotlin-v1.9.6.tar.gz
   dest: bazel-deps
-  sha256: 4531deccb913639c30e5c7512a054d5d875698daeb75d8cf90f284375fe7c360
+  sha256: 3b772976fec7bdcda1d84b9d39b176589424c047eb2175bed09aac630e50af43
 - type: file
-  url: https://github.com/bazelbuild/rules_pkg/releases/download/0.7.0/rules_pkg-0.7.0.tar.gz
+  url: https://github.com/bazelbuild/rules_license/releases/download/1.0.0/rules_license-1.0.0.tar.gz
   dest: bazel-deps
-  sha256: 8a298e832762eda1830597d64fe7db58178aa84cd5926d76d5b744d6558941c2
+  sha256: 26d4021f6898e23b82ef953078389dd49ac2b5618ac564ade4ef87cced147b38
 - type: file
-  url: https://github.com/bazelbuild/rules_proto/releases/download/6.0.0-rc1/rules_proto-6.0.0-rc1.tar.gz
+  url: https://github.com/bazelbuild/rules_pkg/releases/download/1.0.1/rules_pkg-1.0.1.tar.gz
   dest: bazel-deps
-  sha256: 904a8097fae42a690c8e08d805210e40cccb069f5f9a0f6727cf4faa7bed2c9c
+  sha256: d20c951960ed77cb7b341c2a59488534e494d5ad1d30c4818c736d57772a9fef
 - type: file
-  url: https://github.com/bazelbuild/rules_python/releases/download/0.34.0/rules_python-0.34.0.tar.gz
+  url: https://github.com/bazelbuild/rules_python/releases/download/1.0.0/rules_python-1.0.0.tar.gz
   dest: bazel-deps
-  sha256: 778aaeab3e6cfd56d681c89f5c10d7ad6bf8d2f1a72de9de55b23081b2d31618
+  sha256: 4f7e2aa1eb9aa722d96498f5ef514f426c1f55161c3c9ae628c857a7128ceb07
 - type: file
-  url: https://github.com/bazelbuild/rules_swift/releases/download/1.18.0/rules_swift.1.18.0.tar.gz
+  url: https://github.com/bazelbuild/rules_shell/releases/download/v0.2.0/rules_shell-v0.2.0.tar.gz
   dest: bazel-deps
-  sha256: bb01097c7c7a1407f8ad49a1a0b1960655cf823c26ad2782d0b7d15b323838e2
+  sha256: 410e8ff32e018b9efd2743507e7595c26e2628567c42224411ff533b57d27c28
 - type: file
-  url: https://github.com/indygreg/python-build-standalone/releases/download/20240415/cpython-3.11.9+20240415-aarch64-unknown-linux-gnu-install_only.tar.gz
+  url: https://github.com/bazelbuild/rules_swift/releases/download/2.1.1/rules_swift.2.1.1.tar.gz
   dest: bazel-deps
-  sha256: b3a7199ac2615d75fb906e5ba556432efcf24baf8651fc70370d9f052d4069ee
+  sha256: 9919ed1d8dae509645bfd380537ae6501528d8de971caebed6d5185b9970dc4d
 - type: file
-  url: https://github.com/indygreg/python-build-standalone/releases/download/20240415/cpython-3.11.9+20240415-x86_64-unknown-linux-gnu-install_only.tar.gz
+  url: https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/jigyosyo.zip
   dest: bazel-deps
-  sha256: 78b1c16a9fd032997ba92a60f46a64f795cd18ff335659dfdf6096df277b24d5
+  sha256: 0e62af72f56a3039409dc105057051df0e374c2e373a2a068172daaaa1a9af13
+- type: file
+  url: https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/refs/heads/main/ken_all.zip
+  dest: bazel-deps
+  sha256: 8736e6a331be40582cfbd86e77c29b6efdbc8425052877e235c8a3c1f7190150
+- type: file
+  url: https://github.com/indygreg/python-build-standalone/releases/download/20241016/cpython-3.11.10+20241016-aarch64-unknown-linux-gnu-install_only.tar.gz
+  dest: bazel-deps
+  sha256: 803e49259280af0f5466d32829cd9d65a302b0226e424b3f0b261f9daf6aee8f
+- type: file
+  url: https://github.com/indygreg/python-build-standalone/releases/download/20241016/cpython-3.11.10+20241016-x86_64-unknown-linux-gnu-install_only.tar.gz
+  dest: bazel-deps
+  sha256: 8b50a442b04724a24c1eebb65a36a0c0e833d35374dbdf9c9470d8a97b164cd9
 - type: file
   url: https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz
   dest: bazel-deps
   sha256: 9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23
-- type: file
-  url: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-  dest: bazel-deps
-  sha256: 7fe78e0392e62dc9b77d8d5fa89786144b2df6bf07cb7b3fef55ab239292842b
-- type: file
-  url: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
-  dest: bazel-deps
-  sha256: b7a1fb92c5b0e98a8c8ffa3cd732399809fcc80ffef2e19eb2d1faf76fb28777
