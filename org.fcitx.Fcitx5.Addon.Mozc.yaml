@@ -1,17 +1,16 @@
 app-id: org.fcitx.Fcitx5.Addon.Mozc
-branch: stable
 runtime: org.fcitx.Fcitx5
 runtime-version: stable
-sdk: org.kde.Sdk//6.9
+sdk: org.kde.Sdk//6.10
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm21
 build-extension: true
 separate-locales: false
 build-options:
   prefix: /app/addons/Mozc
-  prepend-path: /usr/lib/sdk/llvm18/bin:/app/addons/Mozc/bin
+  prepend-path: /usr/lib/sdk/llvm21/bin:/app/addons/Mozc/bin
   prepend-pkg-config-path: /app/addons/Mozc/lib/pkgconfig
-  prepend-ld-library-path: /usr/lib/sdk/llvm18/lib
+  prepend-ld-library-path: /usr/lib/sdk/llvm21/lib
   env:
     - server_dir=/app/addons/Mozc/lib/mozc
     - document_dir=/app/ime/mozc/licenses/mozc
@@ -29,6 +28,9 @@ modules:
   - name: mozc
     buildsystem: simple
     subdir: src
+    build-options:
+      no-debuginfo: true
+      strip: true
     build-commands:
       - ../scripts/build_fcitx5_bazel --config release_build --distdir=$PWD/../bazel-deps
         --registry=file:///$PWD/../bcr $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt")
@@ -38,11 +40,11 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 963c63ff06ccfb40c6d3893d4209423c3d77d003
+        commit: b57cfe676eb9cf7ce2f73162fdd6eabe848ba5e3
       - type: git
         url: https://github.com/bazelbuild/bazel-central-registry
         dest: bcr
-        commit: 08d0c2c35294732c93650f792b06d45180f8ae90
+        commit: 4899ba05ae8c23ceea339600803cc914e41580ca
       - mozc-deps.yaml
       - type: shell
         commands:
