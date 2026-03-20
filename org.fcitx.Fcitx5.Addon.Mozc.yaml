@@ -40,11 +40,11 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: b57cfe676eb9cf7ce2f73162fdd6eabe848ba5e3
+        commit: 96fcec5b1a2023b50eaec52e7a14ea10e11f5542
       - type: git
         url: https://github.com/bazelbuild/bazel-central-registry
         dest: bcr
-        commit: 4899ba05ae8c23ceea339600803cc914e41580ca
+        commit: af5c40b7636af816fe9b1f7fa3f1a584bb774b8b
       - mozc-deps.yaml
       - type: shell
         commands:
