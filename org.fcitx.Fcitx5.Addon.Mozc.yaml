@@ -1,7 +1,7 @@
 app-id: org.fcitx.Fcitx5.Addon.Mozc
 runtime: org.fcitx.Fcitx5
 runtime-version: stable
-sdk: org.kde.Sdk//6.10
+sdk: org.kde.Sdk//6.11
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm21
 build-extension: true
@@ -24,7 +24,43 @@ cleanup:
   - /lib/pkgconfig
   - '*.la'
 modules:
-  - modules/bazel.yaml
+  - name: bazel
+    buildsystem: simple
+    build-options:
+      strip: false
+      no-debuginfo: true
+      no-debuginfo-compression: true
+    sources:
+      - type: file
+        only-arches:
+          - x86_64
+        url: https://github.com/bazelbuild/bazel/releases/download/9.0.2/bazel-9.0.2-linux-x86_64
+        sha256: 422e7a1690b76d7e615c29091d3aca28d0bd3a93fe3c93cbefb8f72d774926d5
+        dest-filename: bazel
+        x-checker-data:
+          type: anitya
+          project-id: 15227
+          stable-only: true
+          url-template: https://github.com/bazelbuild/bazel/releases/download/${version}/bazel-${version}-linux-x86_64
+          versions:
+            <=: 9.0.2
+      - type: file
+        only-arches:
+          - aarch64
+        url: https://github.com/bazelbuild/bazel/releases/download/9.0.2/bazel-9.0.2-linux-arm64
+        sha256: e9fc2c7b0027619058acae81c063e5ced683cb0f1598e9373b4f752820c03adb
+        dest-filename: bazel
+        x-checker-data:
+          type: anitya
+          project-id: 15227
+          stable-only: true
+          url-template: https://github.com/bazelbuild/bazel/releases/download/${version}/bazel-${version}-linux-arm64
+          versions:
+            <=: 9.0.2
+    build-commands:
+      - install -D -m755 bazel ${FLATPAK_DEST}/bin/bazel
+    cleanup:
+      - '*'
   - name: mozc
     buildsystem: simple
     subdir: src
@@ -40,11 +76,11 @@ modules:
       - type: git
         url: https://github.com/fcitx/mozc
         disable-shallow-clone: true
-        commit: 02eaaa6dc82e629990b70b90f8dc37d0ff6741d5
+        commit: 6b20c794f3112075703bae1603a81dce86b1f44e
       - type: git
         url: https://github.com/bazelbuild/bazel-central-registry
         dest: bcr
-        commit: fecb8a8b8ce54a047ad6da85b6d16027d70b95ac
+        commit: d31607c38086db2b150846aa25c1a4c0dd28c036
       - mozc-deps.yaml
       - type: shell
         commands:
